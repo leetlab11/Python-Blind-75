@@ -21,13 +21,18 @@
 
 # SLIDING WINDOW:
 # Two pointers move in the same direction
-# one variable will be selling price and one will be buying
+# one variable will be selling price(r) and one will be buying(l)
 # only move selling price iteratively
-# moving buying price only when buying > selling -> jump it to current selling price
+# moving buying price only when minimum is found
 # Start at 0 and 1 index
 # maintain a profit variable to calculate max profit, initiating at 0
-# compare l and r -> if l > r, not point in calculating profit, so l will become r, and r will move 1 place further
-# if l < r, calculate profit and update the profit variable to get max profit, move r one place further
+# compare l and r -> if l < r, calculate profit and update the profit variable to get max profit, move r one place further
+# if l > r, profits are negative, so move l. Now, l can move 1 step, but there's no point in doing that
+# currently, r is at the minimum point and we want l to be at minimum
+# so we move l to r's place
+# increment r in any case
+# continue loop until r is out of bounds
+
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
